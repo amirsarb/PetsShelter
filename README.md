@@ -1,3 +1,102 @@
+<div>
+  <h1 align="center">PetsShelter - is a React project which is using : 🧑‍💻</h1>
+  <h2 align="center"> Routes / Route / Link / NavLink</h2>
+<h3>Goals</h3>
+  <ul>
+  <li>
+    Use Bootstrap in React
+  </li>
+  <li>
+    Use Routes / Route / NavLink/ Link (react-router-dom)
+  </li>
+  <li>
+   How to use a props when calling a component by element.
+ </li>
+
+   </ul>
+
+  <p>
+    Screenshot:
+  </p>
+
+  <a href="">
+    <img
+      alt="React Routes Project"
+      src="screenshot.jpg"
+    />
+  </a>
+</div>
+
+<hr />
+
+## Requirements
+- NPM
+- React
+- React-dom
+- react-router-dom
+- Bootstrap
+
+
+## Main Component
+- App.js
+
+``We couldn't pass props directly to the PetShelter component in Routes, So we used the GetComponent function``
+
+```javascript
+
+function GetComponent() {
+  let { name } = useParams()
+  return <PetShelter name={name} />
+
+}
+
+function App() {
+  return (
+    <div className="App">
+      <Navbar />
+      <Routes>
+        <Route exact path="/animal/:name" element={<GetComponent />} />
+        <Route exact path="/" element={<Home />} />
+        <Route path="*" element={<h1>Error not found</h1>} />
+      </Routes>
+    </div>
+  );
+}
+```
+- PetsShelter.js
+
+```javascript
+import React, { Component } from 'react'
+import { NavLink} from 'react-router-dom'
+
+
+
+class PetShelter extends Component {
+constructor(props){
+    super(props)
+    this.state={ isLoaded:false }
+
+}
+
+
+    render() {
+   
+        return (
+            <div><h1>Pet Shelter shows {this.props.name}</h1>
+             <img alt={this.props.name} src={`https://loremflickr.com/400/300/${this.props.name}`}
+        
+             /> 
+
+             <br />
+             <NavLink to="/">
+             Back to Home
+             </NavLink>
+            </div>
+        )
+    }
+}
+export default PetShelter
+```
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
